@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Життя М. Старицького</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: none;
+            background: linear-gradient(135deg, #0c1021 0%, #1a1a3e 50%, #0c1021 100%);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(72, 52, 212, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(168, 85, 247, 0.5);
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2em;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h1 .highlight {
+            background: linear-gradient(135deg, #a855f7, #6366f1, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        h2 .accent {
+            color: #a855f7;
+        }
+
+        p, li {
+            font-size: 1.15em;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4em;
+            color: rgba(168, 85, 247, 0.9);
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .decorative-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #a855f7, #3b82f6);
+            margin-bottom: 25px;
+            border-radius: 2px;
+        }
+
+        .center-text { text-align: center; }
+        .center-items { display: flex; flex-direction: column; align-items: center; }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.6em;
+            color: rgba(255, 255, 255, 0.9);
+            border-left: 3px solid #a855f7;
+            padding-left: 25px;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            border-radius: 12px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #a855f7;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1em;
+        }
+
+        ul.styled-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.styled-list li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            font-size: 1.1em;
+        }
+
+        ul.styled-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #a855f7;
+            font-size: 0.8em;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .timeline-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #a855f7;
+            min-width: 100px;
+            text-align: right;
+        }
+
+        .timeline-desc {
+            font-size: 1.05em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            padding-top: 3px;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .work-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            border-radius: 8px;
+            padding: 18px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .work-item:hover {
+            background: rgba(168, 85, 247, 0.08);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .work-item h4 {
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .work-item .year-tag {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+            font-size: 0.85em;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+
+        .work-item p {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+
+        .final-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            line-height: 1.5;
+            max-width: 800px;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(168, 85, 247, 0.4);
+            transform: scale(1.1);
+        }
+
+        .dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #a855f7;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #a855f7, #6366f1, #3b82f6);
+            transition: width 0.4s ease;
+            z-index: 100;
+        }
+
+        .keyboard-hint {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.25);
+            z-index: 100;
+        }
+
+        .title-slide h1 {
+            font-size: 3.8em;
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.5em;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            color: #c084fc;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .portrait {
+            width: 180px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 8px 32px rgba(168, 85, 247, 0.15);
+            filter: sepia(20%) contrast(1.05);
+        }
+
+        .portrait-large {
+            width: 260px;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 2px solid rgba(168, 85, 247, 0.25);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.12);
+            filter: sepia(15%) contrast(1.03);
+        }
+
+        .photo-row {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .photo-with-caption {
+            text-align: center;
+        }
+
+        .photo-with-caption figcaption {
+            color: rgba(255,255,255,0.45);
+            font-size: 0.85em;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .content-with-image {
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .content-with-image-reverse {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .full-width-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            margin-top: 15px;
+            filter: sepia(10%);
+        }
+
+        @media (max-width: 768px) {
+            .slide { padding: 40px 30px; }
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.6em; }
+            .two-columns { grid-template-columns: 1fr; gap: 20px; }
+            .works-grid { grid-template-columns: 1fr; }
+            .stat-grid { grid-template-columns: 1fr; gap: 20px; }
+            .title-slide h1 { font-size: 2.6em; }
+            .content-with-image, .content-with-image-reverse { grid-template-columns: 1fr; }
+            .photo-row { flex-direction: column; }
+            .portrait-large { width: 200px; height: 260px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="presentation" id="presentation">
+        
+        <!-- SLIDE 1: Title -->
+        <div class="slide title-slide active" data-slide="1">
+            <span class="slide-number">01 / 20</span>
+            <div class="slide-content center-items center-text">
+                <div class="badge">УКРАЇНСЬКИЙ КУЛЬТУРНИЙ ДІЯЧ</div>
+                <div class="decorative-line"></div>
+                <img src="portrait.jpg" alt="Михайло Старицький" class="portrait-large" style="margin-bottom: 25px;">
+                <h1>Михайло <span class="highlight">Старицький</span></h1>
+                <p class="subtitle">1840 — 1904</p>
+                <p style="margin-top: 15px; max-width: 600px; color: rgba(255,255,255,0.6);">
+                    Письменник, драматург, режисер, актор і громадський діяч, 
+                    який присвятив своє життя розвитку українського театру та культури
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Early Life -->
+        <div class="slide" data-slide="2">
+            <span class="slide-number">02 / 20</span>
+            <div class="slide-content">
+                <h2>Дитинство та <span class="accent">походження</span></h2>
+                <div class="decorative-line"></div>
+                <div class="content-with-image">
+                    <div>
+                        <p>
+                            Михайло Петрович Старицький народився <strong style="color:#fff;">2 грудня 1840 року</strong> 
+                            в селі Кліщинці на Полтавщині (нині Черкаська область) у родині дрібного поміщика.
+                        </p>
+                        <br>
+                        <p>
+                            Родина Старицьких належала до давнього козацького роду. 
+                            Батько помер, коли Михайло був ще дитиною, і вихованням 
+                            хлопця опікувався його дядько.
+                        </p>
+                    </div>
+                    <figure class="photo-with-caption">
+                        <img src="portrait_1863.jpg" 
+                             alt="Михайло Старицький (1863)" class="portrait">
+                        <figcaption>М. Старицький, 1863 р.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: Family & Cousins -->
+        <div class="slide" data-slide="3">
+            <span class="slide-number">03 / 20</span>
+            <div class="slide-content">
+                <h2>Родина та <span class="accent">Лисенки</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    Після смерті батька Михайла взяв під своє крило дядько — 
+                    <strong style="color:#fff;">Василь Лисенко</strong>, який доводився рідним братом матері композитора 
+                    <strong style="color:#fff;">Миколи Лисенка</strong>.
+                </p>
+                <div class="card" style="margin-top: 10px;">
+                    <h3>Два генії з однієї родини</h3>
+                    <p>
+                        Михайло Старицький та Микола Лисенко були двоюрідними братами. 
+                        Їхня дружба та співпраця тривала все життя і стала одним із 
+                        найплідніших творчих союзів в історії української культури. 
+                        Разом вони створили фундамент українського професійного театру та музики.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Education -->
+        <div class="slide" data-slide="4">
+            <span class="slide-number">04 / 20</span>
+            <div class="slide-content">
+                <h2>Освіта та <span class="accent">університетські роки</span></h2>
+                <div class="decorative-line"></div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">1850-ті</span>
+                        <span class="timeline-desc">Навчання у Полтавській гімназії, де виявив неабиякі здібності до літератури та мов</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">1858</span>
+                        <span class="timeline-desc">Вступ до Харківського університету на фізико-математичний факультет</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">1860</span>
+                        <span class="timeline-desc">Переїзд до Київського університету Святого Володимира, де навчався на юридичному факультеті</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">1860-ті</span>
+                        <span class="timeline-desc">Активна участь у студентських гуртках, знайомство з українською інтелігенцією Києва</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Youth & Community -->
+        <div class="slide" data-slide="5">
+            <span class="slide-number">05 / 20</span>
+            <div class="slide-content">
+                <h2>Молодість та <span class="accent">громадська діяльність</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    Ще у студентські роки Старицький виявив себе як пристрасний патріот 
+                    та організатор. Він став одним із засновників <strong style="color:#fff;">українського студентського руху</strong> 
+                    та брав участь у діяльності таємних громад.
+                </p>
+                <ul class="styled-list">
+                    <li>Організовував недільні школи для простого народу</li>
+                    <li>Брав участь у культурно-просвітницьких заходах</li>
+                    <li>Збирав та записував українські народні пісні</li>
+                    <li>Співпрацював із київською інтелігенцією</li>
+                    <li>Пропагував ідею розвитку української культури</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: First Works -->
+        <div class="slide" data-slide="6">
+            <span class="slide-number">06 / 20</span>
+            <div class="slide-content">
+                <h2>Перші літературні <span class="accent">спроби</span></h2>
+                <div class="decorative-line"></div>
+                <div class="two-columns">
+                    <div>
+                        <p>
+                            Літературний талант Старицького проявився ще в юності. 
+                            Його перші твори були надруковані в журналах «Основа» та «Черниговский листок».
+                        </p>
+                        <br>
+                        <p>
+                            Поезія молодого автора відрізнялася щирістю почуттів, 
+                            глибоким зв'язком із народною творчістю та 
+                            громадянським пафосом.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Рання творчість</h3>
+                        <p>
+                            Перші вірші Старицького були сповнені любові до рідного краю 
+                            та співчуття до простого народу. Уже в них простежувався 
+                            його самобутній ліричний стиль та майстерність володіння словом.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Hromada -->
+        <div class="slide" data-slide="7">
+            <span class="slide-number">07 / 20</span>
+            <div class="slide-content">
+                <h2>Діяльність у <span class="accent">Громаді</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    Київська <strong style="color:#fff;">Громада</strong> — товариство українських інтелігентів, 
+                    яке ставило собі за мету розвиток української мови, культури та національної самосвідомості.
+                </p>
+                <div class="card" style="margin-bottom: 15px;">
+                    <h3>Роль Старицького</h3>
+                    <p>
+                        Михайло став одним із активних діячів Громади. Він організовував 
+                        літературні вечори, сприяв виданню українських книг та брав участь 
+                        у просвітницькій роботі серед народу. Саме тут остаточно сформувалися 
+                        його погляди на необхідність українського театру.
+                    </p>
+                </div>
+                <p style="color: rgba(255,255,255,0.55); font-size: 0.95em;">
+                    Громада стала тим середовищем, де зародилася ідея створення професійного 
+                    українського театру — мрії, якій Старицький віддав усе своє життя.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: Marriage -->
+        <div class="slide" data-slide="8">
+            <span class="slide-number">08 / 20</span>
+            <div class="slide-content">
+                <h2>Одруження та <span class="accent">родина</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    Дружиною Михайла Старицького стала <strong style="color:#fff;">Софія Лисенко</strong> — 
+                    донька його дядька Василя та рідна сестра Миколи Лисенка.
+                </p>
+                <div class="two-columns">
+                    <div class="card">
+                        <h3>Софія Старицька</h3>
+                        <p>
+                            Софія була не лише вірною дружиною, а й надійною помічницею 
+                            у творчій діяльності чоловіка. Вона поділяла його погляди 
+                            на українську справу та активно долучалася до культурного життя.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Діти</h3>
+                        <p>
+                            У родині Старицьких виросло одинадцятеро дітей. 
+                            Дві доньки — <strong style="color:#fff;">Марія Заньковецька</strong> 
+                            (прийняла сценічне ім'я) та <strong style="color:#fff;">Оксана</strong> — 
+                            стали видатними українськими актрисами.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Theatre beginnings -->
+        <div class="slide" data-slide="9">
+            <span class="slide-number">09 / 20</span>
+            <div class="slide-content">
+                <h2>Початок <span class="accent">театральної діяльності</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    У <strong style="color:#fff;">1882 році</strong> відбулася історична подія — 
+                    Старицький отримав дозвіл на створення української театральної трупи. 
+                    Це стало початком професійного українського театру.
+                </p>
+                <div class="card" style="margin-bottom: 15px;">
+                    <h3>Перша трупа</h3>
+                    <p>
+                        Театральна трупа Старицького об'єднала талановитих акторів, 
+                        які вірили в українську справу. Репертуар складався переважно 
+                        з власних п'єс Старицького та творів інших українських авторів. 
+                        Вистави мали величезний успіх серед глядачів по всій Україні.
+                    </p>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 15px;">
+                    <figure class="photo-with-caption">
+                        <img src="portrait_1870s.jpg" 
+                             alt="Михайло Старицький, 1870-ті" 
+                             style="height: 220px; border-radius: 12px; border: 2px solid rgba(168,85,247,0.25); box-shadow: 0 8px 24px rgba(0,0,0,0.3); filter: sepia(15%);">
+                        <figcaption>М. Старицький, 1870-ті рр.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: Theatre work -->
+        <div class="slide" data-slide="10">
+            <span class="slide-number">10 / 20</span>
+            <div class="slide-content">
+                <h2>Театр <span class="accent">у русі</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    Трупа Старицького вела <strong style="color:#fff;">мандруючий спосіб життя</strong> — 
+                    актори подорожували містами та містечками України, несучи українське слово 
+                    та театр народу.
+                </p>
+                <ul class="styled-list">
+                    <li>Виступали у Києві, Полтаві, Харкові, Чернігові, Одесі</li>
+                    <li>Їздили до малих міст та містечок, де український театр був у дивину</li>
+                    <li>Поєднували розважальний жанр із глибоким національним змістом</li>
+                    <li>Залучали до театру нових акторів та драматургів</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: Collaboration with Lysenko -->
+        <div class="slide" data-slide="11">
+            <span class="slide-number">11 / 20</span>
+            <div class="slide-content">
+                <h2>Співпраця з <span class="accent">Миколою Лисенком</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    Творчий союз Старицького та Лисенка — один із найвизначніших 
+                    в історії української культури. Разом вони створили справжні шедеври.
+                </p>
+                <div class="two-columns">
+                    <div class="card">
+                        <h3>Старицький — лібретист</h3>
+                        <p>
+                    Михайло писав лібрето до опер Лисенка, створюючи поетичні тексти, 
+                    які ідеально поєднувалися з музикою. Його слова оживали в музиці.
+                </p>
+                    </div>
+                    <div class="card">
+                        <h3>Спільні шедеври</h3>
+                        <p>
+                            Серед найвідоміших спільних творів — опера «Наталка Полтавка», 
+                            «Різдвяна ніч», «Утоплена» та «Тарас Бульба». 
+                            Ці твори стали класикою української опери.
+                        </p>
+                    </div>
+                </div>
+                <div class="photo-row" style="justify-content: center; margin-top: 25px;">
+                    <figure class="photo-with-caption">
+                        <img src="star_krop.jpg" 
+                             alt="Старицький і Кропивницький" class="portrait" style="height: 200px;">
+                        <figcaption>М. Старицький та М. Кропивницький</figcaption>
+                    </figure>
+                    <figure class="photo-with-caption">
+                        <img src="portrait_1870s.jpg" 
+                             alt="Старицький 1870-х" class="portrait" style="height: 200px;">
+                        <figcaption>М. Старицький, 1870-ті рр.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: Key works 1 -->
+        <div class="slide" data-slide="12">
+            <span class="slide-number">12 / 20</span>
+            <div class="slide-content">
+                <h2>Визначні <span class="accent">твори</span></h2>
+                <div class="decorative-line"></div>
+                <div class="works-grid">
+                    <div class="work-item">
+                        <span class="year-tag">1874</span>
+                        <h4>«Не судилося»</h4>
+                        <p>Драма про трагічну долю кохання, зумовлену соціальними умовами</p>
+                    </div>
+                    <div class="work-item">
+                        <span class="year-tag">1875</span>
+                        <h4>«Ой, не ходи, Грицю...»</h4>
+                        <p>Популярна п'єса, що стала одним із найвідоміших українських водевілів</p>
+                    </div>
+                    <div class="work-item">
+                        <span class="year-tag">1883</span>
+                        <h4>«За сестрою брат»</h4>
+                        <p>Комедія, сповнена народного гумору та яскравих характерів</p>
+                    </div>
+                    <div class="work-item">
+                        <span class="year-tag">1886</span>
+                        <h4>«Розумний і дурень»</h4>
+                        <p>Сатирична комедія на соціальну тематику</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: Key works 2 -->
+        <div class="slide" data-slide="13">
+            <span class="slide-number">13 / 20</span>
+            <div class="slide-content">
+                <h2>Вершини <span class="accent">творчості</span></h2>
+                <div class="decorative-line"></div>
+                <div class="works-grid">
+                    <div class="work-item">
+                        <span class="year-tag">1889</span>
+                        <h4>«Маруся Богуславка»</h4>
+                        <p>Драма про українську дівчину-невільницю в турецькій неволі, що стала справжньою перлиною драматургії</p>
+                    </div>
+                    <div class="work-item">
+                        <span class="year-tag">1890-ті</span>
+                        <h4>«Вій»</h4>
+                        <p>Обробка повісті Гоголя для сцени — поєднання містики та народного гумору</p>
+                    </div>
+                    <div class="work-item">
+                        <span class="year-tag">1890-ті</span>
+                        <h4>«Як ковбаса та чарка...»</h4>
+                        <p>Легка комедія, яка здобула величезну популярність на сцені</p>
+                    </div>
+                    <div class="work-item">
+                        <span class="year-tag">1899</span>
+                        <h4>«Талісман»</h4>
+                        <p>Одна з останніх п'єс, що підсумовує творчі пошуки драматурга</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 14: Marusya Bohuslavka -->
+        <div class="slide" data-slide="14">
+            <span class="slide-number">14 / 20</span>
+            <div class="slide-content">
+                <h2>«Маруся Богуславка» — <span class="accent">шедевр</span></h2>
+                <div class="decorative-line"></div>
+                <div class="content-with-image-reverse">
+                    <figure class="photo-with-caption">
+                        <img src="vyshyvanka.png" 
+                             alt="Старицький в вишиванці" class="portrait">
+                        <figcaption>М. Старицький у вишитій сорочці</figcaption>
+                    </figure>
+                    <div>
+                        <p>
+                            Драма <strong style="color:#fff;">«Маруся Богуславка»</strong> вважається вершиною 
+                            драматургічного таланту Старицького.
+                        </p>
+                        <br>
+                        <p>
+                            Сюжет розповідає про українську дівчину, яку захопили 
+                            в полон турки. Ставши наложницею султана, вона не забула 
+                            свій народ і допомогла козакам-невольникам врятуватися.
+                        </p>
+                        <div class="quote" style="margin-top: 20px;">
+                            «Якби не я — ви б усі загинули 
+                            в турецькій неволі...»
+                        </div>
+                        <p style="color: rgba(255,255,255,0.55); margin-top: 15px; font-size: 0.95em;">
+                            Твір став символом жертовності та вірності 
+                            своєму народу. П'єса й досі ставиться на сценах 
+                            українських театрів.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 15: Literary style -->
+        <div class="slide" data-slide="15">
+            <span class="slide-number">15 / 20</span>
+            <div class="slide-content">
+                <h2>Літературний <span class="accent">стиль</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    Творчість Старицького вирізнялася поєднанням кількох важливих рис:
+                </p>
+                <div class="two-columns">
+                    <div class="card">
+                        <h3>Народність</h3>
+                        <p>
+                            Глибоке знання народного життя, використання фольклору, 
+                            пісень, звичаїв. Персонажі — живі, справжні люди з народу.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Драматизм</h3>
+                        <p>
+                            Майстерство створення напружених ситуацій, глибоких конфліктів 
+                            та емоційних сцен, які зворушували глядачів до сліз.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Гумор</h3>
+                        <p>
+                            Тонкий, щирий народний гумор, що переплітався 
+                            з драматичними моментами, створюючи яскраву картину життя.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Патріотизм</h3>
+                        <p>
+                            Крізь кожен твір проходила ідея любові до України, 
+                            віри в її майбутнє та гордості за свій народ.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 16: Cultural role -->
+        <div class="slide" data-slide="16">
+            <span class="slide-number">16 / 20</span>
+            <div class="slide-content">
+                <h2>Громадська роль та <span class="accent">значення</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    Старицький був не лише письменником і театральним діячем — 
+                    він був <strong style="color:#fff;">будівничим української національної культури</strong>.
+                </p>
+                <ul class="styled-list">
+                    <li>Створив першу професійну українську театральну трупу</li>
+                    <li>Виховав цілу плеяду українських акторів</li>
+                    <li>Розширив репертуар українського театру десятками п'єс</li>
+                    <li>Сприяв популяризації української мови на сцені</li>
+                    <li>Поєднав театр із музикою, створюючи синтетичне мистецтво</li>
+                    <li>Боровся за визнання української культури на рівних правах</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 17: Challenges -->
+        <div class="slide" data-slide="17">
+            <span class="slide-number">17 / 20</span>
+            <div class="slide-content">
+                <h2>Труднощі та <span class="accent">випробування</span></h2>
+                <div class="decorative-line"></div>
+                <p style="margin-bottom: 20px;">
+                    Шлях Старицького не був легким. Доходилося долати численні перешкоди:
+                </p>
+                <div class="two-columns">
+                    <div class="card">
+                        <h3>Царська влада</h3>
+                        <p>
+                            <strong style="color:#fff;">Емський указ 1876 року</strong> забороняв українську мову 
+                            в пресі, театрі та освіті. Старицький постійно боровся з 
+                            цензурою та перепонами.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Фінансові проблеми</h3>
+                        <p>
+                            Театральна справа була фінансово невигідною. Старицький 
+                            часто вкладав власні кошти, але трупа постійно потерпала 
+                            від браку коштів.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Здоров'я</h3>
+                        <p>
+                            Важка праця, постійні подорожі та стреси підірвали здоров'я. 
+                            Останні роки життя були особливо важкими для драматурга.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>Критика</h3>
+                        <p>
+                            Деякі колеги критикували Старицького за «комерціалізацію» 
+                            театру. Проте він вірив, що театр має бути доступним народу.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 18: Legacy -->
+        <div class="slide" data-slide="18">
+            <span class="slide-number">18 / 20</span>
+            <div class="slide-content">
+                <h2>Спадщина та <span class="accent">вплив</span></h2>
+                <div class="decorative-line"></div>
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">п'єс та драматичних творів</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">поезій та перекладів</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">років театральної діяльності</div>
+                    </div>
+                </div>
+                <br>
+                <p style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.6);">
+                    П'єси Старицького ставляться в театрах і донині. 
+                    Його твори вивчають у школах та університетах. 
+                    Він залишається одним із найважливіших діячів 
+                    української культури XIX століття.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 19: Memory -->
+        <div class="slide" data-slide="19">
+            <span class="slide-number">19 / 20</span>
+            <div class="slide-content">
+                <h2>Пам'ять про <span class="accent">Михайла Старицького</span></h2>
+                <div class="decorative-line"></div>
+                <ul class="styled-list">
+                    <li>Ім'я Старицького носить Київський академічний театр опери та балету для дітей та юнацтва</li>
+                    <li>Вулиці в багатьох містах України названі його іменем</li>
+                    <li>Встановлено пам'ятники та меморіальні дошки</li>
+                    <li>Його твори увійшли до золотого фонду української літератури</li>
+                    <li>Дослідження творчості Старицького продовжуються вченими</li>
+                </ul>
+                <br>
+                <div class="card">
+                    <p style="text-align: center; color: rgba(255,255,255,0.6);">
+                        «Він був одним із тих, хто відроджував українську націю 
+                        через мистецтво та слово» — так говорять про нього історики культури.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 20: Final -->
+        <div class="slide" data-slide="20">
+            <span class="slide-number">20 / 20</span>
+            <div class="slide-content center-items center-text">
+                <div class="badge">ДЯКУЄМО ЗА УВАГУ</div>
+                <div class="decorative-line"></div>
+                <div class="final-quote">
+                    «Він прожив життя, присвячене Україні, 
+                    і залишив нам найцінніший скарб — 
+                    любов до рідного слова»
+                </div>
+                <br>
+                <p style="color: rgba(255,255,255,0.5); margin-top: 20px;">
+                    Михайло Петрович Старицький &nbsp;·&nbsp; 1840 — 14 (27) квітня 1904
+                </p>
+                <div class="stat-grid" style="margin-top: 40px;">
+                    <div class="stat-item">
+                        <div class="stat-number">✦</div>
+                        <div class="stat-label">Письменник</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">✦</div>
+                        <div class="stat-label">Драматург</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">✦</div>
+                        <div class="stat-label">Режисер</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">&#8592;</button>
+        <div class="dots" id="dots"></div>
+        <button class="nav-btn" onclick="nextSlide()">&#8594;</button>
+    </div>
+    <div class="keyboard-hint">← → для навігації</div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 20;
+
+        // Create dots
+        const dotsContainer = document.getElementById('dots');
+        for (let i = 1; i <= totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === 1 ? ' active' : '');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateSlide() {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.querySelector(`[data-slide="${currentSlide}"]`).classList.add('active');
+            
+            document.querySelectorAll('.dot').forEach((d, i) => {
+                d.classList.toggle('active', i === currentSlide - 1);
+            });
+
+            document.getElementById('progressBar').style.width = 
+                ((currentSlide / totalSlides) * 100) + '%';
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            updateSlide();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+        });
+
+        // Touch support
+        let startX = 0;
+        document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+        document.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+        });
+    </script>
+</body>
+</html>
